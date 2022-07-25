@@ -49,13 +49,13 @@ namespace IconButtonControl
                 typeof(IconButton), new PropertyMetadata(new SolidColorBrush(Colors.Red)));
 
 
-        public SolidColorBrush IsCheckedBrush
+        public SolidColorBrush CheckedBrush
         {
-            get { return (SolidColorBrush)GetValue(IsCheckedBrushProperty); }
-            set { SetValue(IsCheckedBrushProperty, value); }
+            get { return (SolidColorBrush)GetValue(CheckedBrushProperty); }
+            set { SetValue(CheckedBrushProperty, value); }
         }
-        public static readonly DependencyProperty IsCheckedBrushProperty =
-            DependencyProperty.Register("IsCheckedBrush", typeof(SolidColorBrush),
+        public static readonly DependencyProperty CheckedBrushProperty =
+            DependencyProperty.Register("CheckedBrush", typeof(SolidColorBrush),
                 typeof(IconButton), new PropertyMetadata(new SolidColorBrush(Colors.Green)));
 
 
@@ -122,7 +122,7 @@ namespace IconButtonControl
         {
             if (IsToggle)
             {
-                if (IsEnabled) Foreground = IsChecked ? IsCheckedBrush : UncheckedBrush;
+                if (IsEnabled) Foreground = IsChecked ? CheckedBrush : UncheckedBrush;
                 else Foreground = DisabledBrush;
             }
             else
@@ -151,7 +151,8 @@ namespace IconButtonControl
         {
             if(IsToggle)
             {
-                Foreground = IsChecked ? IsCheckedBrush : UncheckedBrush;
+                if(IsEnabled)
+                    Foreground = IsChecked ? CheckedBrush : UncheckedBrush;
 
                 if (IsChecked) CheckedCommand?.Execute(null);
                 else UncheckedCommand?.Execute(null);
@@ -201,10 +202,10 @@ namespace IconButtonControl
 
             if(IsToggle)
             {
-                if(IsEnabled) Foreground = IsChecked ? IsCheckedBrush : UncheckedBrush;
+                if(IsEnabled) Foreground = IsChecked ? CheckedBrush : UncheckedBrush;
                 else Foreground = DisabledBrush;
             }
-            else Foreground = IsEnabled ? DisabledBrush : ColorBrush;
+            else Foreground = IsEnabled ? ColorBrush : DisabledBrush;
 
             IsEnabledChanged += IB_IsEnabledChanged;
         }
@@ -213,10 +214,10 @@ namespace IconButtonControl
         {
             if (IsToggle)
             {
-                if (IsEnabled) Foreground = IsChecked ? IsCheckedBrush : UncheckedBrush;
+                if (IsEnabled) Foreground = IsChecked ? CheckedBrush : UncheckedBrush;
                 else Foreground = DisabledBrush;
             }
-            else Foreground = IsEnabled ? DisabledBrush : ColorBrush;
+            else Foreground = IsEnabled ? ColorBrush : DisabledBrush;
         }
 
 
@@ -246,8 +247,7 @@ namespace IconButtonControl
             if (AnimationsEnabled) AnimateIn();
 
             if (IsToggle) IsChecked = !IsChecked;
-
-            Command?.Execute(null);
+            else Command?.Execute(null);
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
