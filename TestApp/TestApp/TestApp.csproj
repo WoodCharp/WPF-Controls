@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="IconButtonControl">
+      <HintPath>..\..\IconButtonControl\IconButtonControl\bin\Release\net6.0-windows\IconButtonControl.dll</HintPath>
+    </Reference>
+    <Reference Include="ToggleButtonControl">
+      <HintPath>..\..\ToggleButtonControl\ToggleButtonControl\bin\Release\net6.0-windows\ToggleButtonControl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

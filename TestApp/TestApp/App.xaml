@@ -1,0 +1,43 @@
+﻿<Application x:Class="TestApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TestApp"
+             xmlns:ib="clr-namespace:IconButtonControl;assembly=IconButtonControl"
+             xmlns:tb="clr-namespace:ToggleButtonControl;assembly=ToggleButtonControl"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <Style TargetType="{x:Type ib:IconButton}">
+
+                <Setter Property="ColorBrush" Value="Black"/>
+                <Setter Property="HoverBrush" Value="Gray"/>
+                <Setter Property="DisabledBrush" Value="LightGray"/>
+                <Setter Property="UncheckedBrush" Value="Gray"/>
+                <Setter Property="CheckedBrush" Value="DarkSlateGray"/>
+
+            </Style>
+
+            <Style TargetType="{x:Type tb:ToggleButton}">
+
+                <Setter Property="ColorBrush" Value="Black"/>
+                <Setter Property="DisabledBrush" Value="LightGray"/>
+                <Setter Property="UncheckedBrush" Value="Red"/>
+                <Setter Property="CheckedBrush" Value="Green"/>
+
+            </Style>
+
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="Icons.xaml"/>
+
+                <ResourceDictionary  Source="pack://application:,,,/IconButtonControl;component/Themes/Generic.xaml"/>
+                <ResourceDictionary  Source="pack://application:,,,/ToggleButtonControl;component/Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
